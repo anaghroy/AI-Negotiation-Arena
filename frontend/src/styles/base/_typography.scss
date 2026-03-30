@@ -1,0 +1,29 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
+$font-family-primary: 'Outfit', sans-serif;
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-regular);
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #fff, $text-secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+p {
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, $primary-neon, $secondary-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

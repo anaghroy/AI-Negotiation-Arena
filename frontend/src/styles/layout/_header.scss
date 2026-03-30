@@ -1,0 +1,122 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins';
+
+.app-header {
+  @include mixins.glass-panel;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-sm $spacing-xl;
+  border-radius: 0 0 $border-radius-md $border-radius-md;
+  border-top: none;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    
+    h1 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #00f0ff;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+  }
+
+  .nav-controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    .nav-link {
+      background: transparent;
+      border: none;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.85rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      cursor: pointer;
+      position: relative;
+      padding-bottom: 4px;
+      transition: color $transition-fast;
+
+      &:hover, &.active {
+        color: #fff;
+        
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          height: 2px;
+          background: #00f0ff;
+        }
+      }
+    }
+
+    .btn-cyan {
+      background: #00f0ff;
+      color: #0b0c10;
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: transform $transition-fast, box-shadow $transition-fast;
+
+      &:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+      }
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      .avatar-circle {
+        width: 32px;
+        height: 32px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        cursor: pointer;
+        transition: background $transition-fast;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.2);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .app-header {
+    padding: $spacing-sm;
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    .nav-controls {
+      span.nav-label {
+        display: none;
+      }
+    }
+  }
+}

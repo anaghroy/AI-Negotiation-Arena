@@ -1,0 +1,158 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins';
+.game-layout {
+  display: flex;
+  flex: 1;
+  padding: $spacing-lg $spacing-md;
+  gap: $spacing-lg;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.main-game-container {
+  @include mixins.glass-panel;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 700px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  box-shadow: $box-shadow-soft;
+  height: calc(100vh - 120px);
+}
+
+.side-panel {
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  
+
+  @media (max-width: 1024px) {
+    display: none; // Hidden on smaller screens, can be a modal
+  }
+}
+
+// Chat section
+.chat-window {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+  scroll-behavior: smooth;
+  
+}
+
+.message-bubble {
+  max-width: 80%;
+  padding: $spacing-sm $spacing-md;
+  border-radius: $border-radius-lg;
+  animation: fadeIn 0.3s ease forwards;
+  position: relative;
+  line-height: 1.4;
+
+  &.ai {
+    align-self: flex-start;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid $surface-border;
+    border-bottom-left-radius: 2px;
+  }
+
+  &.user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, rgba($primary-neon, 0.2), rgba($secondary-neon, 0.2));
+    border: 1px solid rgba($primary-neon, 0.3);
+    border-bottom-right-radius: 2px;
+    color: #fff;
+  }
+}
+
+// Input section
+.input-section {
+  padding: $spacing-md;
+  border-top: 1px solid $surface-border;
+  background: rgba(0, 0, 0, 0.2);
+
+  .quick-actions {
+    display: flex;
+    gap: $spacing-xs;
+    margin-bottom: $spacing-sm;
+    overflow-x: auto;
+    padding-bottom: 4px;
+
+    .chip {
+      @include glass-panel;
+      padding: 6px 12px;
+      font-size: 0.8rem;
+      white-space: nowrap;
+      cursor: pointer;
+      border-radius: 20px;
+      transition: all $transition-fast;
+      color: #fff;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+    }
+  }
+
+  .input-wrapper {
+    display: flex;
+    gap: $spacing-xs;
+
+    input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid $surface-border;
+      border-radius: $border-radius-md;
+      padding: $spacing-sm;
+      color: #fff;
+      font-family: inherit;
+      outline: none;
+      transition: border-color $transition-fast;
+
+      &:focus {
+        border-color: rgba($primary-neon, 0.5);
+        box-shadow: inset 0 0 5px rgba($primary-neon, 0.1);
+      }
+      
+      &::placeholder {
+        color: $text-muted;
+      }
+    }
+
+    .send-btn {
+      background: linear-gradient(135deg, $primary-neon, $secondary-neon);
+      border: none;
+      border-radius: $border-radius-md;
+      width: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      transition: transform $transition-fast;
+
+      &:hover {
+        transform: scale(1.05);
+        box-shadow: $box-shadow-glow;
+      }
+      
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        transform: none;
+      }
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
