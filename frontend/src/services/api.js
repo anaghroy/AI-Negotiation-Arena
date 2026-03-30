@@ -1,4 +1,4 @@
-const BASE_URL = "http://localhost:5000/api/negotiation";
+const BASE_URL = "/api/negotiation";
 
 // 🔹 START GAME
 export async function startGame(playerName) {
@@ -54,7 +54,7 @@ export async function getLeaderboard() {
   }
 }
 
-const AUTH_URL = "http://localhost:5000/api/auth";
+const AUTH_URL = "/api/auth";
 
 export async function registerUser(name, email, password) {
   try {
