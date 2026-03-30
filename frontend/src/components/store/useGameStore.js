@@ -136,7 +136,7 @@ export const useGameStore = create(
       fetchLeaderboard: async () => {
         try {
           const res = await fetch(
-            "http://localhost:5000/api/negotiation/leaderboard",
+            "/api/negotiation/leaderboard",
             {
               credentials: "include",
             },

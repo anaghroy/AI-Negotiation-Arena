@@ -18,7 +18,7 @@ export async function startGame(playerName) {
   }
 }
 
-// 🔹 SEND OFFER (NEGOTIATE)
+// SEND OFFER (NEGOTIATE)
 export async function sendOffer(sessionId, message) {
   try {
     const res = await fetch(`${BASE_URL}/offer`, {
@@ -38,7 +38,7 @@ export async function sendOffer(sessionId, message) {
   }
 }
 
-// 🔹 GET LEADERBOARD
+// GET LEADERBOARD
 export async function getLeaderboard() {
   try {
     const res = await fetch(`${BASE_URL}/leaderboard`, {
